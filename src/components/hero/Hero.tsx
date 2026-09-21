@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import SpatialPhotoCards from "./SpatialPhotoCards";
 import IdentityCard3D from "./IdentityCard3D";
+import ScrollHeading from "@/components/ui/ScrollHeading";
 import { RESUME_DATA } from "@/data/resume";
 import { ArrowDown } from "lucide-react";
 
@@ -26,13 +27,7 @@ export default function Hero() {
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
           <span className="text-text-main font-semibold">AVAILABLE FOR SDE ROLES</span>
           <span className="text-text-subtle">/</span>
-          <span>FULL-STACK & SYSTEMS</span>
-        </div>
-
-        <div className="flex items-center space-x-4 text-text-subtle hidden sm:flex">
-          <span>{RESUME_DATA.location}</span>
-          <span>{RESUME_DATA.coordinates}</span>
-          <span>IIIT BHOPAL</span>
+          <span>FULL-STACK &amp; SYSTEMS</span>
         </div>
       </motion.div>
 
@@ -40,17 +35,23 @@ export default function Hero() {
       <div className="relative my-auto py-8 md:py-12">
         {/* Layer 1: Monumental Typography with Counterweight 3D Identity Card */}
         <div className="relative z-0 select-none flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <motion.div
+          <ScrollHeading
+            isHero
+            isMonumental
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="editorial-headline text-text-main font-bold tracking-tighter"
-          >
-            <span className="block leading-[0.88]">SOFTWARE</span>
-            <span className="block leading-[0.88] text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500">
-              ENGINEER
-            </span>
-          </motion.div>
+            lines={[
+              { text: "SOFTWARE", direction: "left", className: "leading-[0.88]" },
+              {
+                text: "ENGINEER",
+                direction: "right",
+                className:
+                  "leading-[0.88] text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500",
+              },
+            ]}
+          />
 
           {/* 3D Minimal Identity Card */}
           <motion.div
@@ -105,11 +106,6 @@ export default function Hero() {
           <span>EXPLORE PROJECTS</span>
           <ArrowDown className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-y-1" />
         </button>
-
-        <div className="flex items-center space-x-3 text-text-subtle">
-          <span className="inline-block w-8 h-[1px] bg-surface-border" />
-          <span>EST. 2024–2027</span>
-        </div>
       </motion.div>
     </section>
   );

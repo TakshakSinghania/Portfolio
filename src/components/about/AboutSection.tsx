@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import ScrollHeading from "@/components/ui/ScrollHeading";
 import { RESUME_DATA } from "@/data/resume";
 import { ArrowUpRight, Award, GraduationCap, Download, Code } from "lucide-react";
 
@@ -17,11 +18,20 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
       {/* Section Header */}
       <div className="pb-8 border-b border-surface-border">
         <div className="text-[11px] font-mono tracking-widest text-text-muted mb-2">
-          04 // PROFILE & BACKGROUND
+          02 // PROFILE &amp; BACKGROUND
         </div>
-        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
-          ABOUT &amp; EXPERIENCE
-        </h2>
+        <ScrollHeading
+          as="h2"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white leading-[0.92]"
+          lines={[
+            { text: "ABOUT", direction: "left" },
+            {
+              text: "& EXPERIENCE",
+              direction: "right",
+              className: "pl-6 sm:pl-12 md:pl-20 text-neutral-300",
+            },
+          ]}
+        />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12">

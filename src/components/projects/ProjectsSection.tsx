@@ -1,21 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { Project, PROJECTS } from "@/data/projects";
+import { Project } from "@/data/projects";
 import CircularCarousel from "./CircularCarousel";
 import ScatteredGridView from "./ScatteredGridView";
 import CaseStudyModal from "./CaseStudyModal";
+import ScrollHeading from "@/components/ui/ScrollHeading";
 import { Orbit, Grid3X3 } from "lucide-react";
 
-interface ProjectsSectionProps {
-  onJumpToArchitecture?: () => void;
-}
-
-export default function ProjectsSection({
-  onJumpToArchitecture,
-}: ProjectsSectionProps) {
+export default function ProjectsSection() {
   const [viewMode, setViewMode] = useState<"orbit" | "scattered">("orbit");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [, setSelectedProject] = useState<Project | null>(null);
   const [caseStudyProject, setCaseStudyProject] = useState<Project | null>(null);
 
   return (
@@ -24,18 +19,27 @@ export default function ProjectsSection({
       <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-surface-border gap-6">
         <div>
           <div className="text-[11px] font-mono tracking-widest text-text-muted mb-2">
-            01 — 05 // ENGINEERING PORTFOLIO
+            01 // SELECTED PROJECTS
           </div>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
-            SELECTED PROJECTS
-          </h2>
+          <ScrollHeading
+            as="h2"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-white leading-[0.92]"
+            lines={[
+              { text: "SELECTED", direction: "left" },
+              {
+                text: "PROJECTS",
+                direction: "right",
+                className: "pl-6 sm:pl-12 md:pl-20 text-neutral-300",
+              },
+            ]}
+          />
         </div>
 
         {/* View Toggle */}
         <div className="flex items-center space-x-1 p-1 bg-surface rounded border border-surface-border w-fit">
           <button
             onClick={() => setViewMode("orbit")}
-            className={`flex items-center space-x-2 px-3 py-1.5 rounded text-xs font-mono tracking-wider transition-all ${
+            className={`flex items-center space-x-2 px-3 py-1.5 rounded text-xs font-mono tracking-wider transition-all cursor-pointer ${
               viewMode === "orbit"
                 ? "bg-white text-black font-semibold shadow-sm"
                 : "text-text-muted hover:text-white"
@@ -48,7 +52,7 @@ export default function ProjectsSection({
 
           <button
             onClick={() => setViewMode("scattered")}
-            className={`flex items-center space-x-2 px-3 py-1.5 rounded text-xs font-mono tracking-wider transition-all ${
+            className={`flex items-center space-x-2 px-3 py-1.5 rounded text-xs font-mono tracking-wider transition-all cursor-pointer ${
               viewMode === "scattered"
                 ? "bg-white text-black font-semibold shadow-sm"
                 : "text-text-muted hover:text-white"
@@ -77,7 +81,6 @@ export default function ProjectsSection({
       <CaseStudyModal
         project={caseStudyProject}
         onClose={() => setCaseStudyProject(null)}
-        onJumpToArchitecture={onJumpToArchitecture}
       />
     </section>
   );

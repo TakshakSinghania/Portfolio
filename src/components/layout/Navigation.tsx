@@ -31,7 +31,6 @@ export default function Navigation({ onOpenResume }: NavigationProps) {
   const navLinks = [
     { label: "ABOUT", id: "about" },
     { label: "PROJECTS", id: "projects" },
-    { label: "ARCHITECTURE", id: "architecture" },
     { label: "CONTACT", id: "contact" },
   ];
 

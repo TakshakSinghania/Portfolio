@@ -14,24 +14,60 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
+
     if (isOpen) {
+      const scrollY = window.scrollY;
+
+      const lenis = (window as any).__lenis;
+      if (lenis) {
+        lenis.stop();
+      }
+
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+      document.body.style.width = "100%";
       document.body.style.overflow = "hidden";
+
       window.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+
+        const savedTop = document.body.style.top;
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.left = "";
+        document.body.style.right = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+
+        const y = parseInt(savedTop || "0", 10) * -1;
+        window.scrollTo(0, y);
+
+        const currentLenis = (window as any).__lenis;
+        if (currentLenis) {
+          currentLenis.start();
+          currentLenis.scrollTo(y, { immediate: true });
+        }
+      };
     }
-    return () => {
-      document.body.style.overflow = "auto";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-black/90 backdrop-blur-xl">
-        <div className="fixed inset-0 cursor-pointer" onClick={onClose} />
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-black/90 backdrop-blur-xl overflow-hidden">
+        <div
+          className="absolute inset-0 cursor-pointer"
+          onClick={onClose}
+          aria-hidden="true"
+        />
 
         <motion.div
+          data-lenis-prevent="true"
           initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -70,7 +106,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
               <button
                 onClick={onClose}
-                className="p-1.5 border border-surface-border text-text-muted hover:text-white rounded transition-colors"
+                className="p-1.5 border border-surface-border text-text-muted hover:text-white rounded transition-colors cursor-pointer"
                 aria-label="Close resume viewer"
               >
                 <X className="w-4 h-4" />

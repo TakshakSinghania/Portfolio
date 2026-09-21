@@ -12,29 +12,24 @@ import ResumeViewer from "@/components/about/ResumeViewer";
 export default function Home() {
   const [resumeOpen, setResumeOpen] = useState(false);
 
-  const jumpToArchitecture = () => {
-    const el = document.getElementById("architecture");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <main className="relative bg-base text-text-main min-h-screen overflow-x-hidden selection:bg-white selection:text-black">
       {/* Persistent Minimal Header */}
       <Navigation onOpenResume={() => setResumeOpen(true)} />
 
-      {/* Section 01: Monumental Hero with 3D Identity Card & Photo Cards */}
+      {/* Monumental Hero with 3D Identity Card & Photo Cards */}
       <Hero />
 
-      {/* Section 02: 3D Orbital Projects & Scattered Grid with Real Assets */}
-      <ProjectsSection onJumpToArchitecture={jumpToArchitecture} />
+      {/* Section 01: 3D Orbital Projects & Scattered Grid */}
+      <ProjectsSection />
 
-      {/* Section 03: Editorial Typography Transition & Interactive Architecture */}
+      {/* Standalone Editorial Transition: "BACKEND? THAT'S A TOMORROW PROBLEM." */}
       <ArchitectureSection />
 
-      {/* Section 04: Profile, Education, LeetCode, CodeChef & Technical Taxonomy */}
+      {/* Section 02: Profile, Education, LeetCode, CodeChef & Technical Taxonomy */}
       <AboutSection onOpenResume={() => setResumeOpen(true)} />
 
-      {/* Section 05: Minimalist Editorial Footer */}
+      {/* Section 03: Minimalist Editorial Contact Footer */}
       <Footer />
 
       {/* In-Page Resume PDF Viewer Modal */}

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import ScrollHeading from "@/components/ui/ScrollHeading";
 import { RESUME_DATA } from "@/data/resume";
 import { ArrowUpRight, ArrowUp } from "lucide-react";
 
@@ -14,16 +15,23 @@ export default function Footer() {
       {/* Monumental Editorial Headline */}
       <div className="py-12 select-none">
         <div className="text-[11px] font-mono tracking-widest text-text-muted mb-4">
-          05 // CONTACT &amp; COLLABORATION
+          03 // CONTACT &amp; COLLABORATION
         </div>
 
-        <div className="editorial-headline text-white font-bold leading-[0.88] tracking-tighter">
-          <span className="block">LET&apos;S</span>
-          <span className="block">BUILD</span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-600">
-            SOMETHING.
-          </span>
-        </div>
+        <ScrollHeading
+          isMonumental
+          className="editorial-headline text-white font-bold leading-[0.88] tracking-tighter"
+          lines={[
+            { text: "LET'S", direction: "left" },
+            { text: "BUILD", direction: "rotate", className: "text-text-muted" },
+            {
+              text: "SOMETHING.",
+              direction: "right",
+              className:
+                "text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-600",
+            },
+          ]}
+        />
       </div>
 
       {/* Verified Contact Links */}
@@ -66,8 +74,8 @@ export default function Footer() {
             LINKEDIN NETWORK
           </div>
           <div className="flex items-center justify-between text-white font-bold">
-            <span>takshak-singhania</span>
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <span className="truncate">takshak-singhania-a67661292</span>
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 flex-shrink-0 ml-1" />
           </div>
         </a>
 
@@ -93,8 +101,6 @@ export default function Footer() {
           <span className="text-white font-bold">तक्षक सिंघानिया</span>
           <span className="text-text-subtle">/</span>
           <span>TAKSHAK SINGHANIA</span>
-          <span className="text-text-subtle">•</span>
-          <span>EST. 2024–2027</span>
         </div>
 
         <button

@@ -26,6 +26,9 @@ export default function SmoothScrollProvider({
       touchMultiplier: 1.2,
     });
 
+    // Make lenis globally accessible for modal scroll lock
+    (window as any).__lenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -36,6 +39,7 @@ export default function SmoothScrollProvider({
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      delete (window as any).__lenis;
     };
   }, []);
 

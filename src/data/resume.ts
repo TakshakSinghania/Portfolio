@@ -33,7 +33,7 @@ export const RESUME_DATA = {
     email: "takshaksinghania1@gmail.com",
     phone: "(+91) 9351595646",
     github: "https://github.com/TakshakSinghania",
-    linkedin: "https://linkedin.com/in/takshak-singhania",
+    linkedin: "https://www.linkedin.com/in/takshak-singhania-a67661292/",
     codechef: "https://www.codechef.com/users/takshak19",
   },
   summary:

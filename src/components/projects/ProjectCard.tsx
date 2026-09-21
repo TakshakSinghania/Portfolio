@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { Project } from "@/data/projects";
-import { ArrowUpRight, CheckCircle2, AlertCircle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 interface ProjectCardProps {
   project: Project;
@@ -20,10 +20,7 @@ export default function ProjectCard({
   onSelect,
   onOpenCaseStudy,
   className = "",
-  variant = "carousel",
 }: ProjectCardProps) {
-  const isConcept = project.status === "CONCEPT / IN DEVELOPMENT";
-
   return (
     <article
       onClick={() => {
@@ -39,23 +36,9 @@ export default function ProjectCard({
           : "border-surface-border hover:border-surface-border-bright"
       } ${className}`}
     >
-      {/* Top Meta Bar */}
-      <div className="flex items-center justify-between text-[10px] font-mono tracking-wider text-text-muted mb-3">
+      {/* Top Meta Bar: Clean Project Number */}
+      <div className="flex items-center text-[10px] font-mono tracking-wider text-text-muted mb-3">
         <span className="text-text-main font-bold">{project.number}</span>
-        
-        <div className="flex items-center space-x-1.5">
-          {isConcept ? (
-            <span className="flex items-center space-x-1 px-2 py-0.5 rounded text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20">
-              <AlertCircle className="w-2.5 h-2.5" />
-              <span>CONCEPT</span>
-            </span>
-          ) : (
-            <span className="flex items-center space-x-1 px-2 py-0.5 rounded text-[9px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              <CheckCircle2 className="w-2.5 h-2.5" />
-              <span>{project.status}</span>
-            </span>
-          )}
-        </div>
       </div>
 
       {/* Image Preview Container */}
@@ -70,13 +53,6 @@ export default function ProjectCard({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
 
-        {/* Sentosa Specific Badge if applicable */}
-        {project.id === "sentosa" && (
-          <div className="absolute top-2.5 left-2.5 px-2 py-1 bg-sentosa-blue/80 backdrop-blur-md rounded text-[9px] font-mono tracking-widest text-white">
-            FLAGSHIP // CAFÉ POS
-          </div>
-        )}
-
         {/* Hover Action Pill */}
         <div className="absolute bottom-2.5 right-2.5 flex items-center space-x-1 px-2.5 py-1 bg-white/90 text-black text-[9px] font-mono tracking-widest uppercase rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <span>{isActive ? "EXPLORE" : "SELECT"}</span>
@@ -86,7 +62,7 @@ export default function ProjectCard({
 
       {/* Project Details */}
       <div className="space-y-1.5">
-        <div className="text-[10px] font-mono tracking-widest text-text-subtle">
+        <div className="text-[10px] font-mono tracking-widest text-text-subtle uppercase">
           {project.category}
         </div>
 
