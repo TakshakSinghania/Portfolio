@@ -1,0 +1,175 @@
+"use client";
+
+import React from "react";
+import { RESUME_DATA } from "@/data/resume";
+import { ArrowUpRight, Award, GraduationCap, Users, Download, Code } from "lucide-react";
+
+interface AboutSectionProps {
+  onOpenResume: () => void;
+}
+
+export default function AboutSection({ onOpenResume }: AboutSectionProps) {
+  return (
+    <section
+      id="about"
+      className="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-surface-border"
+    >
+      {/* Section Header */}
+      <div className="pb-8 border-b border-surface-border">
+        <div className="text-[11px] font-mono tracking-widest text-text-muted mb-2">
+          04 // PROFILE & BACKGROUND
+        </div>
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-white">
+          ABOUT &amp; EXPERIENCE
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12">
+        {/* Left Column: Bio & Core Focus */}
+        <div className="lg:col-span-6 space-y-8">
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-white tracking-tight">
+              Takshak Singhania
+            </h3>
+            <p className="text-base text-text-muted leading-relaxed">
+              {RESUME_DATA.summary}
+            </p>
+          </div>
+
+          {/* Education */}
+          <div className="p-6 rounded bg-surface border border-surface-border space-y-3">
+            <div className="flex items-center space-x-2 text-xs font-mono tracking-widest text-text-muted">
+              <GraduationCap className="w-4 h-4 text-white" />
+              <span>EDUCATION</span>
+            </div>
+            <div className="text-base font-bold text-white">
+              {RESUME_DATA.education[0].institution}
+            </div>
+            <div className="text-xs text-text-muted">
+              {RESUME_DATA.education[0].degree}
+            </div>
+            <div className="text-[11px] font-mono text-text-subtle">
+              {RESUME_DATA.education[0].period}
+            </div>
+            <div className="pt-2 text-xs text-text-muted">
+              <span className="font-semibold text-neutral-300">Coursework:</span>{" "}
+              {RESUME_DATA.education[0].coursework.join(", ")}
+            </div>
+          </div>
+
+          {/* Leadership & Experience */}
+          <div className="p-6 rounded bg-surface border border-surface-border space-y-4">
+            <div className="flex items-center justify-between text-xs font-mono tracking-widest text-text-muted">
+              <div className="flex items-center space-x-2">
+                <Users className="w-4 h-4 text-emerald-400" />
+                <span>LEADERSHIP EXPERIENCE</span>
+              </div>
+              <span>{RESUME_DATA.experience[0].period}</span>
+            </div>
+
+            <div>
+              <div className="text-base font-bold text-white">
+                {RESUME_DATA.experience[0].role}
+              </div>
+              <div className="text-xs text-emerald-400 font-mono mt-0.5">
+                {RESUME_DATA.experience[0].organization}
+              </div>
+            </div>
+
+            <ul className="space-y-2 text-xs text-text-muted">
+              {RESUME_DATA.experience[0].highlights.map((item, i) => (
+                <li key={i} className="flex items-start space-x-2">
+                  <span className="text-white font-mono mt-0.5">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="pt-2 flex flex-wrap gap-1.5">
+              {RESUME_DATA.experience[0].tech.map((t) => (
+                <span
+                  key={t}
+                  className="px-2 py-0.5 rounded bg-black/50 border border-surface-border text-[9px] font-mono text-text-muted"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Resume Actions */}
+          <div className="flex items-center space-x-4 pt-2">
+            <button
+              onClick={onOpenResume}
+              className="flex items-center space-x-2 px-4 py-2 bg-white text-black font-semibold rounded text-xs font-mono tracking-wider hover:bg-neutral-200 transition-colors"
+            >
+              <span>VIEW RESUME</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </button>
+
+            <a
+              href="/resume.pdf"
+              download="Takshak_Singhania_Resume.pdf"
+              className="flex items-center space-x-2 px-4 py-2 border border-surface-border hover:border-white text-white rounded text-xs font-mono tracking-wider transition-colors"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>DOWNLOAD RESUME</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Right Column: Skills Matrix & Achievements */}
+        <div className="lg:col-span-6 space-y-8">
+          {/* Competitive Achievements */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {RESUME_DATA.achievements.map((ach) => (
+              <div
+                key={ach.platform}
+                className="p-5 rounded bg-surface border border-surface-border space-y-2"
+              >
+                <div className="flex items-center space-x-1.5 text-xs font-mono text-amber-400">
+                  <Award className="w-3.5 h-3.5" />
+                  <span>{ach.platform}</span>
+                </div>
+                <div className="text-lg font-bold text-white">
+                  {ach.headline}
+                </div>
+                <p className="text-xs text-text-muted leading-relaxed">
+                  {ach.detail}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Technical Skills Hierarchy */}
+          <div className="p-6 rounded bg-surface border border-surface-border space-y-6">
+            <div className="flex items-center space-x-2 text-xs font-mono tracking-widest text-text-muted">
+              <Code className="w-4 h-4 text-white" />
+              <span>TECHNICAL TAXONOMY</span>
+            </div>
+
+            <div className="space-y-5">
+              {RESUME_DATA.skills.map((cat) => (
+                <div key={cat.title} className="space-y-2">
+                  <div className="text-[10px] font-mono tracking-widest text-text-subtle uppercase">
+                    {cat.title}
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {cat.skills.map((sk) => (
+                      <span
+                        key={sk}
+                        className="px-2.5 py-1 rounded bg-black/60 border border-surface-border text-xs font-mono text-neutral-300"
+                      >
+                        {sk}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
