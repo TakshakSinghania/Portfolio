@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0c"/>
+      <stop offset="100%" stop-color="#050506"/>
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#60a5fa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Grid Lines -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="160" y1="0" x2="160" y2="500"/>
+    <line x1="320" y1="0" x2="320" y2="500"/>
+    <line x1="480" y1="0" x2="480" y2="500"/>
+    <line x1="640" y1="0" x2="640" y2="500"/>
+  </g>
+
+  <!-- Top System Bar -->
+  <rect x="40" y="35" width="720" height="44" rx="6" fill="#111116" stroke="#ffffff" stroke-opacity="0.1"/>
+  <circle cx="65" cy="57" r="4" fill="#10b981"/>
+  <text x="80" y="61" fill="#ffffff" font-family="ui-monospace, monospace" font-size="12" font-weight="700" letter-spacing="1.5">PAYFLOW // PAYMENT INFRASTRUCTURE ENGINE</text>
+  <text x="630" y="61" fill="#60a5fa" font-family="ui-monospace, monospace" font-size="10" font-weight="600" letter-spacing="1">POSTGRESQL 16 + REDIS</text>
+
+  <!-- Left: 6-State Lifecycle Diagram -->
+  <rect x="40" y="100" width="440" height="350" rx="8" fill="#121217" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text x="65" y="132" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="11" font-weight="600" letter-spacing="1">PAYMENT LIFECYCLE FINITE STATE MACHINE</text>
+
+  <!-- State Pipeline Blocks -->
+  <g transform="translate(65, 155)">
+    <!-- Created -->
+    <rect x="0" y="0" width="115" height="42" rx="4" fill="#1a1a24" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="57" y="25" fill="#ffffff" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">CREATED</text>
+    
+    <!-- Arrow -->
+    <line x1="115" y1="21" x2="135" y2="21" stroke="#3b82f6" stroke-width="1.5"/>
+    <polygon points="135,18 142,21 135,24" fill="#3b82f6"/>
+
+    <!-- Authorized -->
+    <rect x="145" y="0" width="115" height="42" rx="4" fill="#1a1a24" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="202" y="25" fill="#ffffff" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">AUTHORIZED</text>
+
+    <!-- Arrow -->
+    <line x1="260" y1="21" x2="280" y2="21" stroke="#3b82f6" stroke-width="1.5"/>
+    <polygon points="280,18 287,21 280,24" fill="#3b82f6"/>
+
+    <!-- Captured -->
+    <rect x="290" y="0" width="100" height="42" rx="4" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+    <text x="340" y="25" fill="#10b981" font-family="ui-monospace, monospace" font-size="10" font-weight="700" text-anchor="middle">CAPTURED</text>
+  </g>
+
+  <!-- Row Locking Code Callout -->
+  <g transform="translate(65, 225)">
+    <rect x="0" y="0" width="390" height="95" rx="4" fill="#08080a" stroke="#ffffff" stroke-opacity="0.1"/>
+    <text x="15" y="25" fill="#64748b" font-family="ui-monospace, monospace" font-size="9">// Concurrency Serialization via Row-Level Lock</text>
+    <text x="15" y="45" fill="#60a5fa" font-family="ui-monospace, monospace" font-size="10" font-weight="600">SELECT * FROM payments WHERE id = $1 FOR UPDATE;</text>
+    <text x="15" y="65" fill="#10b981" font-family="ui-monospace, monospace" font-size="9">> Lock acquired: Concurrent transactions serialized</text>
+    <text x="15" y="82" fill="#e2e8f0" font-family="ui-monospace, monospace" font-size="9">> SHA-256 Idempotency Hash: Error 23505 prevented</text>
+  </g>
+
+  <g transform="translate(65, 340)">
+    <rect x="0" y="0" width="185" height="85" rx="4" fill="#16161d" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="15" y="25" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="9">TRANSACTION ID</text>
+    <text x="15" y="45" fill="#ffffff" font-family="ui-monospace, monospace" font-size="11" font-weight="700">tx_pay_9041a7f</text>
+    <text x="15" y="68" fill="#10b981" font-family="ui-monospace, monospace" font-size="10">STATUS: SETTLED</text>
+
+    <rect x="205" y="0" width="185" height="85" rx="4" fill="#16161d" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="220" y="25" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="9">AUTOMATED SUITE</text>
+    <text x="220" y="45" fill="#ffffff" font-family="ui-monospace, monospace" font-size="11" font-weight="700">58 PASSING TESTS</text>
+    <text x="220" y="68" fill="#60a5fa" font-family="ui-monospace, monospace" font-size="10">JEST + SUPERTEST</text>
+  </g>
+
+  <!-- Right: Asynchronous Webhook Queue Pipeline -->
+  <rect x="500" y="100" width="260" height="350" rx="8" fill="#121217" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text x="520" y="132" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="11" font-weight="600" letter-spacing="1">BULLMQ RETRY QUEUE</text>
+
+  <!-- Queue Items -->
+  <g transform="translate(520, 155)">
+    <rect x="0" y="0" width="220" height="48" rx="4" fill="#1a1a24" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="15" y="20" fill="#ffffff" font-family="ui-monospace, monospace" font-size="10" font-weight="600">job_wh_delivery_01</text>
+    <text x="15" y="36" fill="#10b981" font-family="ui-monospace, monospace" font-size="9">ATTEMPT 1/5: 200 OK</text>
+
+    <rect x="0" y="58" width="220" height="48" rx="4" fill="#1a1a24" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="15" y="78" fill="#ffffff" font-family="ui-monospace, monospace" font-size="10" font-weight="600">job_wh_delivery_02</text>
+    <text x="15" y="94" fill="#f59e0b" font-family="ui-monospace, monospace" font-size="9">BACKOFF RETRY: 4000ms</text>
+
+    <rect x="0" y="116" width="220" height="48" rx="4" fill="#1a1a24" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="15" y="136" fill="#ffffff" font-family="ui-monospace, monospace" font-size="10" font-weight="600">job_wh_delivery_03</text>
+    <text x="15" y="152" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="9">QUEUED // HMAC SIGNED</text>
+  </g>
+
+  <!-- Security Spec Callout -->
+  <g transform="translate(520, 340)">
+    <rect x="0" y="0" width="220" height="85" rx="4" fill="#08080a" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="15" y="24" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="9">PAYLOAD SECURITY</text>
+    <text x="15" y="45" fill="#ffffff" font-family="ui-monospace, monospace" font-size="10" font-weight="700">HMAC-SHA256 SIGNING</text>
+    <text x="15" y="68" fill="#60a5fa" font-family="ui-monospace, monospace" font-size="9">Header: X-PayFlow-Sig</text>
+  </g>
+</svg>

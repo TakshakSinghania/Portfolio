@@ -32,7 +32,6 @@ export default function Navigation({ onOpenResume }: NavigationProps) {
     { label: "ABOUT", id: "about" },
     { label: "PROJECTS", id: "projects" },
     { label: "ARCHITECTURE", id: "architecture" },
-    { label: "EXPERIMENTS", id: "experiments" },
     { label: "CONTACT", id: "contact" },
   ];
 

@@ -2,11 +2,9 @@
 
 import React, { useState } from "react";
 import Navigation from "@/components/layout/Navigation";
-import CustomCursor from "@/components/layout/CustomCursor";
 import Hero from "@/components/hero/Hero";
 import ProjectsSection from "@/components/projects/ProjectsSection";
 import ArchitectureSection from "@/components/architecture/ArchitectureSection";
-import ExperimentsSection from "@/components/experiments/ExperimentsSection";
 import AboutSection from "@/components/about/AboutSection";
 import Footer from "@/components/layout/Footer";
 import ResumeViewer from "@/components/about/ResumeViewer";
@@ -21,28 +19,22 @@ export default function Home() {
 
   return (
     <main className="relative bg-base text-text-main min-h-screen overflow-x-hidden selection:bg-white selection:text-black">
-      {/* Desktop Contextual Cursor */}
-      <CustomCursor />
-
       {/* Persistent Minimal Header */}
       <Navigation onOpenResume={() => setResumeOpen(true)} />
 
-      {/* Section 01: Monumental Hero */}
+      {/* Section 01: Monumental Hero with 3D Identity Card & Photo Cards */}
       <Hero />
 
-      {/* Section 02: 3D Orbital Projects & Scattered Grid */}
+      {/* Section 02: 3D Orbital Projects & Scattered Grid with Real Assets */}
       <ProjectsSection onJumpToArchitecture={jumpToArchitecture} />
 
       {/* Section 03: Editorial Typography Transition & Interactive Architecture */}
       <ArchitectureSection />
 
-      {/* Section 04: Creative Coding Experiments Archive */}
-      <ExperimentsSection />
-
-      {/* Section 05: Profile, Leadership & Technical Taxonomy */}
+      {/* Section 04: Profile, Education, LeetCode, CodeChef & Technical Taxonomy */}
       <AboutSection onOpenResume={() => setResumeOpen(true)} />
 
-      {/* Section 06: Minimalist Editorial Footer */}
+      {/* Section 05: Minimalist Editorial Footer */}
       <Footer />
 
       {/* In-Page Resume PDF Viewer Modal */}

@@ -3,15 +3,16 @@
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-export default function CardDepthToy() {
+export default function IdentityCard3D() {
   const cardRef = useRef<HTMLDivElement>(null);
   const [specular, setSpecular] = useState({ x: 50, y: 50, opacity: 0 });
 
   const rotX = useMotionValue(0);
   const rotY = useMotionValue(0);
 
-  const springRotX = useSpring(rotX, { damping: 20, stiffness: 200 });
-  const springRotY = useSpring(rotY, { damping: 20, stiffness: 200 });
+  // Smooth Apple-grade spring physics
+  const springRotX = useSpring(rotX, { damping: 24, stiffness: 220 });
+  const springRotY = useSpring(rotY, { damping: 24, stiffness: 220 });
 
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!cardRef.current) return;
@@ -22,13 +23,13 @@ export default function CardDepthToy() {
     const normX = (x / rect.width - 0.5) * 2;
     const normY = (y / rect.height - 0.5) * 2;
 
-    rotY.set(normX * 18);
-    rotX.set(-normY * 18);
+    rotY.set(normX * 14);
+    rotX.set(-normY * 14);
 
     setSpecular({
       x: (x / rect.width) * 100,
       y: (y / rect.height) * 100,
-      opacity: 0.35,
+      opacity: 0.3,
     });
   };
 
@@ -42,7 +43,7 @@ export default function CardDepthToy() {
     <div
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      className="w-full h-72 flex items-center justify-center perspective-1000 p-4 select-none"
+      className="perspective-1000 select-none flex items-center justify-center p-2"
     >
       <motion.div
         ref={cardRef}
@@ -51,7 +52,7 @@ export default function CardDepthToy() {
           rotateY: springRotY,
           transformStyle: "preserve-3d",
         }}
-        className="relative w-64 h-40 rounded-xl p-5 bg-gradient-to-br from-neutral-900 to-black border border-white/20 shadow-2xl flex flex-col justify-between overflow-hidden cursor-grab active:cursor-grabbing"
+        className="relative w-52 sm:w-64 h-32 sm:h-36 rounded-lg p-6 bg-gradient-to-br from-[#141416] via-[#0d0d0f] to-[#060608] border border-white/15 shadow-2xl flex flex-col justify-center items-center overflow-hidden transition-all duration-300 hover:border-white/30"
       >
         {/* Dynamic Specular Sheen */}
         <div
@@ -61,26 +62,17 @@ export default function CardDepthToy() {
           }}
         />
 
-        {/* Card Header */}
-        <div className="flex justify-between items-center text-[10px] font-mono tracking-widest text-white/50">
-          <span>SPATIAL TENSOR</span>
-          <span>CSS 3D MATRIX</span>
-        </div>
+        {/* Top Edge Refraction Line */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-        {/* Center Hologram Mark */}
-        <div className="text-center">
-          <div className="text-xs font-mono font-bold tracking-widest text-white">
-            TAKSHAK SINGHANIA
+        {/* Pure Personal Identity Typography */}
+        <div className="text-center relative z-10 space-y-1">
+          <div className="text-sm sm:text-base font-bold tracking-[0.18em] text-white uppercase font-sans">
+            TAKSHAK
           </div>
-          <div className="text-[9px] font-mono text-white/40 mt-0.5">
-            23.2599° N // 77.4126° E
+          <div className="text-xs sm:text-sm font-semibold tracking-[0.2em] text-neutral-400 uppercase font-sans">
+            SINGHANIA
           </div>
-        </div>
-
-        {/* Card Bottom */}
-        <div className="flex justify-between items-center text-[9px] font-mono text-white/60">
-          <span>DAMPING: 20</span>
-          <span>STIFFNESS: 200</span>
         </div>
       </motion.div>
     </div>

@@ -51,19 +51,7 @@ export const RESUME_DATA = {
       ],
     },
   ] as EducationItem[],
-  experience: [
-    {
-      role: "Web Development Lead",
-      organization: "Axios Development Club, IIIT Bhopal",
-      period: "Sep 2025 – Present",
-      type: "Club Leadership",
-      highlights: [
-        "Managed a 6-member engineering team using Agile sprints; improved code quality through GitHub-based peer reviews and automated CI checks.",
-        "Streamlined deployment workflows by automating build processes with GitHub Actions and Git version control.",
-      ],
-      tech: ["Agile/Scrum", "GitHub Actions", "CI/CD", "Code Reviews", "Full-Stack Mentorship"],
-    },
-  ] as ExperienceItem[],
+  experience: [] as ExperienceItem[],
   skills: [
     {
       title: "Languages",

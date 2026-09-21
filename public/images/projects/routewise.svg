@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="rwBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090a0d"/>
+      <stop offset="100%" stop-color="#040405"/>
+    </linearGradient>
+    <linearGradient id="routeGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#rwBg)"/>
+
+  <!-- Street Network Map Vectors (Subtle Dark Graph Grid) -->
+  <g stroke="#ffffff" stroke-opacity="0.07" stroke-width="1.2">
+    <!-- Horizontal road segments -->
+    <line x1="40" y1="120" x2="520" y2="120"/>
+    <line x1="40" y1="180" x2="520" y2="180"/>
+    <line x1="40" y1="240" x2="520" y2="240"/>
+    <line x1="40" y1="300" x2="520" y2="300"/>
+    <line x1="40" y1="360" x2="520" y2="360"/>
+    <line x1="40" y1="420" x2="520" y2="420"/>
+
+    <!-- Vertical road segments -->
+    <line x1="80" y1="90" x2="80" y2="450"/>
+    <line x1="160" y1="90" x2="160" y2="450"/>
+    <line x1="240" y1="90" x2="240" y2="450"/>
+    <line x1="320" y1="90" x2="320" y2="450"/>
+    <line x1="400" y1="90" x2="400" y2="450"/>
+    <line x1="480" y1="90" x2="480" y2="450"/>
+
+    <!-- Diagonal arterial thoroughfares -->
+    <line x1="80" y1="120" x2="480" y2="360" stroke-opacity="0.12" stroke-width="2"/>
+    <line x1="160" y1="420" x2="400" y2="180" stroke-opacity="0.12" stroke-width="2"/>
+  </g>
+
+  <!-- Dijkstra/A* Explored Frontier Ring Wave -->
+  <circle cx="160" cy="240" r="110" fill="none" stroke="#3b82f6" stroke-opacity="0.15" stroke-dasharray="4 4"/>
+  <circle cx="160" cy="240" r="70" fill="none" stroke="#3b82f6" stroke-opacity="0.25" stroke-dasharray="2 2"/>
+
+  <!-- Active Optimal Route Polyline -->
+  <polyline points="80,180 160,180 240,240 320,240 400,300 480,360" fill="none" stroke="url(#routeGlow)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Waypoints & Graph Vertices -->
+  <g>
+    <!-- Start Node -->
+    <circle cx="80" cy="180" r="8" fill="#10b981"/>
+    <circle cx="80" cy="180" r="14" fill="none" stroke="#10b981" stroke-opacity="0.4" stroke-width="2"/>
+    <text x="75" y="160" fill="#10b981" font-family="ui-monospace, monospace" font-size="10" font-weight="700">ORIGIN (A)</text>
+
+    <!-- Waypoint 1 -->
+    <circle cx="240" cy="240" r="5" fill="#ffffff"/>
+    <!-- Waypoint 2 -->
+    <circle cx="320" cy="240" r="5" fill="#ffffff"/>
+    <!-- Waypoint 3 -->
+    <circle cx="400" cy="300" r="5" fill="#ffffff"/>
+
+    <!-- Destination Node -->
+    <circle cx="480" cy="360" r="8" fill="#06b6d4"/>
+    <circle cx="480" cy="360" r="14" fill="none" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="2"/>
+    <text x="445" y="395" fill="#06b6d4" font-family="ui-monospace, monospace" font-size="10" font-weight="700">TARGET (B)</text>
+  </g>
+
+  <!-- Top System Header Bar -->
+  <rect x="40" y="30" width="720" height="42" rx="6" fill="#111116" stroke="#ffffff" stroke-opacity="0.1"/>
+  <circle cx="65" cy="51" r="4" fill="#06b6d4"/>
+  <text x="80" y="55" fill="#ffffff" font-family="ui-monospace, monospace" font-size="12" font-weight="700" letter-spacing="1.5">ROUTEWISE // SPATIAL GRAPH ENGINE</text>
+  <text x="615" y="55" fill="#10b981" font-family="ui-monospace, monospace" font-size="10" font-weight="600" letter-spacing="1">14,000+ OSM NODES</text>
+
+  <!-- Right Side: Algorithmic Metrics & Priority Queue Inspector -->
+  <rect x="540" y="90" width="220" height="360" rx="8" fill="#101116" stroke="#ffffff" stroke-opacity="0.08"/>
+  <text x="560" y="122" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="11" font-weight="600" letter-spacing="1">ALGORITHM METRICS</text>
+
+  <!-- Stat Block 1 -->
+  <g transform="translate(560, 140)">
+    <rect x="0" y="0" width="180" height="60" rx="4" fill="#181820" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="12" y="22" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="9">PRIORITY QUEUE</text>
+    <text x="12" y="42" fill="#ffffff" font-family="ui-monospace, monospace" font-size="12" font-weight="700">O(log V) MinHeap</text>
+  </g>
+
+  <!-- Stat Block 2 -->
+  <g transform="translate(560, 212)">
+    <rect x="0" y="0" width="180" height="60" rx="4" fill="#181820" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="12" y="22" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="9">TSP OPTIMIZATION</text>
+    <text x="12" y="42" fill="#10b981" font-family="ui-monospace, monospace" font-size="12" font-weight="700">2-Opt Local Search</text>
+  </g>
+
+  <!-- Stat Block 3 -->
+  <g transform="translate(560, 284)">
+    <rect x="0" y="0" width="180" height="60" rx="4" fill="#181820" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="12" y="22" fill="#9ca3af" font-family="ui-monospace, monospace" font-size="9">DISTANCE FORMULA</text>
+    <text x="12" y="42" fill="#06b6d4" font-family="ui-monospace, monospace" font-size="12" font-weight="700">Haversine Great-Circle</text>
+  </g>
+
+  <!-- Stat Block 4 -->
+  <g transform="translate(560, 356)">
+    <rect x="0" y="0" width="180" height="74" rx="4" fill="#08080a" stroke="#ffffff" stroke-opacity="0.06"/>
+    <text x="12" y="22" fill="#64748b" font-family="ui-monospace, monospace" font-size="9">OSM DOWNTOWNS</text>
+    <text x="12" y="42" fill="#ffffff" font-family="ui-monospace, monospace" font-size="10" font-weight="600">NYC, LON, TOK, PAR</text>
+    <text x="12" y="58" fill="#10b981" font-family="ui-monospace, monospace" font-size="9">> 10 automated test suites</text>
+  </g>
+</svg>

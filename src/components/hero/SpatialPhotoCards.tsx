@@ -22,7 +22,7 @@ const CARDS: CardSpec[] = [
     id: "photo-1",
     title: "STRUCTURE // 01",
     category: "BRUTALIST CONCRETE",
-    src: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80",
+    src: "/images/photography/structure.svg",
     aspect: "aspect-[3/4]",
     initialRotate: -5,
     initialX: -140,
@@ -34,7 +34,7 @@ const CARDS: CardSpec[] = [
     id: "photo-2",
     title: "SILICON // 02",
     category: "SYSTEM HARDWARE",
-    src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80",
+    src: "/images/photography/silicon.svg",
     aspect: "aspect-[4/5]",
     initialRotate: 3,
     initialX: 30,
@@ -46,7 +46,7 @@ const CARDS: CardSpec[] = [
     id: "photo-3",
     title: "SENTOSA // 03",
     category: "TACTILE CRAFT",
-    src: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80",
+    src: "/images/photography/sentosa-craft.jpg",
     aspect: "aspect-[3/4]",
     initialRotate: 8,
     initialX: 180,
@@ -94,7 +94,6 @@ export default function SpatialPhotoCards() {
     <div
       ref={containerRef}
       className="relative w-full h-[420px] md:h-[540px] flex items-center justify-center perspective-1200 select-none pointer-events-auto"
-      data-cursor="TILT"
     >
       <motion.div
         style={{

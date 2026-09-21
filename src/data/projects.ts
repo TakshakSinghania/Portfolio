@@ -52,7 +52,7 @@ export const PROJECTS: Project[] = [
       "Razorpay",
       "Tailwind CSS",
     ],
-    image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/projects/sentosa.jpg",
     color: "#6492b3",
     overview:
       "Sentosa is a full-stack, real-world restaurant QR ordering and kitchen operations platform combining tabletop QR resolution, mobile phone OTP authentication, table-specific popular recommendations ('Guests here often order…'), item customization, instant checkout, and live WebSocket kitchen ticket synchronization.",
@@ -115,7 +115,7 @@ export const PROJECTS: Project[] = [
       "BullMQ",
       "Docker",
     ],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/projects/payflow.svg",
     overview:
       "A high-reliability payment lifecycle engine and distributed webhook delivery system engineered to prevent race conditions across concurrent capture and refund requests while ensuring guaranteed asynchronous event delivery.",
     problem:
@@ -169,7 +169,7 @@ export const PROJECTS: Project[] = [
       "JavaScript",
       "OpenStreetMap Vector Data",
     ],
-    image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/projects/routewise.svg",
     overview:
       "A spatial routing and graph computation engine built on OpenStreetMap vector data across 5 global downtown districts, capable of modeling 14,000+ street nodes and computing optimal multi-stop delivery tours.",
     problem:
@@ -216,7 +216,7 @@ export const PROJECTS: Project[] = [
     status: "CONCEPT / IN DEVELOPMENT",
     featured: false,
     stack: ["TypeScript", "Next.js", "Gemini API", "GitHub Apps", "Babel AST Parser"],
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/projects/ai-code-review.svg",
     overview:
       "A developer tooling concept engineered to automate code reviews on GitHub Pull Requests by combining AST diff parsing with LLM context windows to catch anti-patterns and memory leaks.",
     problem:
@@ -254,7 +254,7 @@ export const PROJECTS: Project[] = [
     status: "CONCEPT / IN DEVELOPMENT",
     featured: false,
     stack: ["Python", "TypeScript", "FastAPI", "pgvector", "PostgreSQL", "LangChain"],
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80",
+    image: "/images/projects/ai-document-intelligence.svg",
     overview:
       "An asynchronous document indexing and hybrid retrieval system built to answer engineering queries across RFC documents, API specs, and technical system runbooks with exact paragraph citations.",
     problem:

@@ -84,7 +84,6 @@ export default function CircularCarousel({
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       className="relative w-full py-12 md:py-20 flex flex-col items-center justify-center overflow-hidden select-none"
-      data-cursor="DRAG"
     >
       {/* 3D Orbit Stage */}
       <div className="relative w-full max-w-5xl h-[460px] md:h-[520px] flex items-center justify-center perspective-1200">

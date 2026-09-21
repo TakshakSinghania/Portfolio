@@ -2,7 +2,7 @@
 
 import React from "react";
 import { RESUME_DATA } from "@/data/resume";
-import { ArrowUpRight, Award, GraduationCap, Users, Download, Code } from "lucide-react";
+import { ArrowUpRight, Award, GraduationCap, Download, Code } from "lucide-react";
 
 interface AboutSectionProps {
   onOpenResume: () => void;
@@ -54,46 +54,6 @@ export default function AboutSection({ onOpenResume }: AboutSectionProps) {
             <div className="pt-2 text-xs text-text-muted">
               <span className="font-semibold text-neutral-300">Coursework:</span>{" "}
               {RESUME_DATA.education[0].coursework.join(", ")}
-            </div>
-          </div>
-
-          {/* Leadership & Experience */}
-          <div className="p-6 rounded bg-surface border border-surface-border space-y-4">
-            <div className="flex items-center justify-between text-xs font-mono tracking-widest text-text-muted">
-              <div className="flex items-center space-x-2">
-                <Users className="w-4 h-4 text-emerald-400" />
-                <span>LEADERSHIP EXPERIENCE</span>
-              </div>
-              <span>{RESUME_DATA.experience[0].period}</span>
-            </div>
-
-            <div>
-              <div className="text-base font-bold text-white">
-                {RESUME_DATA.experience[0].role}
-              </div>
-              <div className="text-xs text-emerald-400 font-mono mt-0.5">
-                {RESUME_DATA.experience[0].organization}
-              </div>
-            </div>
-
-            <ul className="space-y-2 text-xs text-text-muted">
-              {RESUME_DATA.experience[0].highlights.map((item, i) => (
-                <li key={i} className="flex items-start space-x-2">
-                  <span className="text-white font-mono mt-0.5">•</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="pt-2 flex flex-wrap gap-1.5">
-              {RESUME_DATA.experience[0].tech.map((t) => (
-                <span
-                  key={t}
-                  className="px-2 py-0.5 rounded bg-black/50 border border-surface-border text-[9px] font-mono text-text-muted"
-                >
-                  {t}
-                </span>
-              ))}
             </div>
           </div>
 

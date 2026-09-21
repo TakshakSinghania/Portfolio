@@ -33,7 +33,6 @@ export default function ProjectCard({
           onSelect();
         }
       }}
-      data-cursor={isActive ? "EXPAND" : "VIEW"}
       className={`relative w-full rounded p-4 bg-surface border transition-all duration-300 cursor-pointer select-none group ${
         isActive
           ? "border-white/40 shadow-tactile-hover"
@@ -65,6 +64,7 @@ export default function ProjectCard({
           src={project.image}
           alt={project.title}
           fill
+          unoptimized={project.image.endsWith(".svg")}
           sizes="(max-width: 768px) 300px, 420px"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />

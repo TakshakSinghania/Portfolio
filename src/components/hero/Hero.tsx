@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SpatialPhotoCards from "./SpatialPhotoCards";
+import IdentityCard3D from "./IdentityCard3D";
 import { RESUME_DATA } from "@/data/resume";
 import { ArrowDown } from "lucide-react";
 
@@ -37,8 +38,8 @@ export default function Hero() {
 
       {/* Main Compositional Center */}
       <div className="relative my-auto py-8 md:py-12">
-        {/* Layer 1: Monumental Background Headline */}
-        <div className="relative z-0 select-none">
+        {/* Layer 1: Monumental Typography with Counterweight 3D Identity Card */}
+        <div className="relative z-0 select-none flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -50,10 +51,20 @@ export default function Hero() {
               ENGINEER
             </span>
           </motion.div>
+
+          {/* 3D Minimal Identity Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="self-start sm:self-auto lg:self-center lg:mr-6"
+          >
+            <IdentityCard3D />
+          </motion.div>
         </div>
 
         {/* Layer 2: 3D Spatial Photo Cards (Floating Across the Center) */}
-        <div className="relative z-10 -mt-12 sm:-mt-20 md:-mt-28">
+        <div className="relative z-10 -mt-10 sm:-mt-16 md:-mt-24">
           <SpatialPhotoCards />
         </div>
 
