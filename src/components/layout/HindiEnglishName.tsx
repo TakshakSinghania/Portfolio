@@ -6,11 +6,13 @@ import { motion } from "framer-motion";
 interface HindiEnglishNameProps {
   className?: string;
   onNavigateTop?: () => void;
+  isScrolled?: boolean;
 }
 
 export default function HindiEnglishName({
   className = "",
   onNavigateTop,
+  isScrolled = false,
 }: HindiEnglishNameProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -30,13 +32,16 @@ export default function HindiEnglishName({
     }
   };
 
+  const primaryTextColor = isScrolled ? "text-[#F5F5F7]" : "text-[#0A0A0A]";
+  const secondaryTextColor = isScrolled ? "text-text-muted" : "text-[#0A0A0A]/60";
+
   return (
     <button
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative text-left select-none focus:outline-none focus-visible:ring-1 focus-visible:ring-white/40 rounded px-1 py-0.5 cursor-pointer ${className}`}
+      className={`group relative text-left select-none focus:outline-none focus-visible:ring-1 focus-visible:ring-black/40 rounded px-1 py-0.5 cursor-pointer ${className}`}
       aria-label="Takshak Singhania — Brand Home Link"
       title="Takshak Singhania / तक्षक सिंघानिया"
     >
@@ -49,12 +54,12 @@ export default function HindiEnglishName({
           }}
           transition={{
             duration: 0.32,
-            ease: [0.16, 1, 0.3, 1], // Critically damped Apple spring curve
+            ease: [0.16, 1, 0.3, 1],
           }}
           className="absolute inset-0 flex flex-col justify-center text-[11px] font-semibold tracking-[0.14em] uppercase leading-[1.25]"
         >
-          <span className="block text-[#F5F5F7]">TAKSHAK</span>
-          <span className="block text-text-muted">SINGHANIA</span>
+          <span className={`block font-bold ${primaryTextColor}`}>TAKSHAK</span>
+          <span className={`block ${secondaryTextColor}`}>SINGHANIA</span>
         </motion.div>
 
         {/* Hindi Version (Hover State) */}
@@ -69,8 +74,8 @@ export default function HindiEnglishName({
           }}
           className="absolute inset-0 flex flex-col justify-center text-[12px] font-medium tracking-[0.06em] leading-[1.25]"
         >
-          <span className="block font-sans text-text-muted">तक्षक</span>
-          <span className="block font-sans text-[#F5F5F7]">सिंघानिया</span>
+          <span className={`block font-sans ${secondaryTextColor}`}>तक्षक</span>
+          <span className={`block font-sans font-bold ${primaryTextColor}`}>सिंघानिया</span>
         </motion.div>
       </div>
 

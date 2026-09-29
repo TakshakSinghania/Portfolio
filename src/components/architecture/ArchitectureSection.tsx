@@ -19,7 +19,7 @@ export default function ArchitectureSection() {
     <section
       id="architecture-transition"
       ref={containerRef}
-      className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto border-t border-surface-border overflow-hidden select-none"
+      className="w-full py-28 md:py-36 px-6 md:px-12 lg:px-16 xl:px-20 border-t border-surface-border overflow-hidden select-none"
     >
       {/* Unnumbered Editorial Label */}
       <div className="text-[11px] font-mono tracking-widest text-text-muted mb-6">
@@ -40,7 +40,7 @@ export default function ArchitectureSection() {
             text: "PROBLEM.",
             direction: "left",
             className:
-              "text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-400 to-neutral-600",
+              "text-transparent bg-clip-text bg-gradient-to-r from-white via-beige to-text-muted",
           },
         ]}
       />
@@ -50,9 +50,9 @@ export default function ArchitectureSection() {
         {components.map((comp) => (
           <div
             key={comp.name}
-            className="px-4 py-2.5 rounded bg-surface border border-surface-border text-xs font-mono transition-colors hover:border-surface-border-bright"
+            className="px-4 py-2.5 rounded bg-surface border border-surface-border text-xs font-mono transition-colors hover:border-beige/30"
           >
-            <span className="text-white font-bold">{comp.name}</span>
+            <span className="text-beige font-bold">{comp.name}</span>
             <span className="text-text-subtle ml-2 font-normal">
               {"//"} {comp.desc}
             </span>

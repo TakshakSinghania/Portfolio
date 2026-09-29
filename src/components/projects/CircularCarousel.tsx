@@ -86,7 +86,7 @@ export default function CircularCarousel({
       className="relative w-full py-12 md:py-20 flex flex-col items-center justify-center overflow-hidden select-none"
     >
       {/* 3D Orbit Stage */}
-      <div className="relative w-full max-w-5xl h-[460px] md:h-[520px] flex items-center justify-center perspective-1200">
+      <div className="relative w-full max-w-7xl h-[480px] md:h-[540px] flex items-center justify-center perspective-1200">
         <div className="relative w-full h-full flex items-center justify-center preserve-3d">
           {PROJECTS.map((project, index) => {
             // Calculate circular offset relative to activeIndex
@@ -159,7 +159,7 @@ export default function CircularCarousel({
       <div className="flex items-center space-x-6 mt-6 z-20">
         <button
           onClick={prevCard}
-          className="p-2 rounded-full border border-surface-border text-text-muted hover:text-white hover:border-white/30 transition-all focus:outline-none"
+          className="p-2 rounded-full border border-surface-border text-text-muted hover:text-beige hover:border-beige/40 transition-all focus:outline-none"
           aria-label="Previous Project"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -173,8 +173,8 @@ export default function CircularCarousel({
               onClick={() => setActiveIndex(idx)}
               className={`h-1.5 transition-all duration-300 rounded-full ${
                 idx === activeIndex
-                  ? "w-7 bg-white"
-                  : "w-2 bg-white/20 hover:bg-white/40"
+                  ? "w-7 bg-beige"
+                  : "w-2 bg-beige/25 hover:bg-beige/50"
               }`}
               aria-label={`Go to project ${proj.title}`}
             />
@@ -183,7 +183,7 @@ export default function CircularCarousel({
 
         <button
           onClick={nextCard}
-          className="p-2 rounded-full border border-surface-border text-text-muted hover:text-white hover:border-white/30 transition-all focus:outline-none"
+          className="p-2 rounded-full border border-surface-border text-text-muted hover:text-beige hover:border-beige/40 transition-all focus:outline-none"
           aria-label="Next Project"
         >
           <ChevronRight className="w-4 h-4" />

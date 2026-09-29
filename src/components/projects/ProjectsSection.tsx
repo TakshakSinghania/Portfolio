@@ -14,7 +14,7 @@ export default function ProjectsSection() {
   const [caseStudyProject, setCaseStudyProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-surface-border">
+    <section id="projects" className="w-full py-24 md:py-32 px-6 md:px-12 lg:px-16 xl:px-20 border-t border-surface-border">
       {/* Section Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-surface-border gap-6">
         <div>
@@ -29,7 +29,7 @@ export default function ProjectsSection() {
               {
                 text: "PROJECTS",
                 direction: "right",
-                className: "pl-6 sm:pl-12 md:pl-20 text-neutral-300",
+                className: "pl-6 sm:pl-12 md:pl-20 text-beige",
               },
             ]}
           />
@@ -41,7 +41,7 @@ export default function ProjectsSection() {
             onClick={() => setViewMode("orbit")}
             className={`flex items-center space-x-2 px-3 py-1.5 rounded text-xs font-mono tracking-wider transition-all cursor-pointer ${
               viewMode === "orbit"
-                ? "bg-white text-black font-semibold shadow-sm"
+                ? "bg-beige text-black font-semibold shadow-sm"
                 : "text-text-muted hover:text-white"
             }`}
             aria-label="Switch to 3D Orbit View"
@@ -54,7 +54,7 @@ export default function ProjectsSection() {
             onClick={() => setViewMode("scattered")}
             className={`flex items-center space-x-2 px-3 py-1.5 rounded text-xs font-mono tracking-wider transition-all cursor-pointer ${
               viewMode === "scattered"
-                ? "bg-white text-black font-semibold shadow-sm"
+                ? "bg-beige text-black font-semibold shadow-sm"
                 : "text-text-muted hover:text-white"
             }`}
             aria-label="Switch to Scattered Grid View"

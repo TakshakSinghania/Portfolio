@@ -67,18 +67,18 @@ export default function IdentityCard3D() {
           rotateY: springRotY,
           transformStyle: "preserve-3d",
         }}
-        className="relative w-56 sm:w-64 h-32 sm:h-36 rounded-lg bg-gradient-to-br from-[#141416] via-[#0d0d0f] to-[#060608] border border-white/15 shadow-2xl overflow-hidden cursor-pointer transition-[border-color,box-shadow] duration-300 hover:border-white/30 hover:shadow-tactile-hover focus:outline-none focus-visible:ring-1 focus-visible:ring-white"
+        className="relative w-56 sm:w-64 h-32 sm:h-36 rounded-lg bg-gradient-to-br from-[#161514] via-[#0F0E0D] to-[#080707] border border-beige/15 shadow-2xl overflow-hidden cursor-pointer transition-[border-color,box-shadow] duration-300 hover:border-beige/35 hover:shadow-tactile-hover focus:outline-none focus-visible:ring-1 focus-visible:ring-beige"
       >
         {/* Dynamic Specular Sheen */}
         <div
           className="absolute inset-0 pointer-events-none transition-opacity duration-300"
           style={{
-            background: `radial-gradient(circle at ${specular.x}% ${specular.y}%, rgba(255,255,255,${specular.opacity}), transparent 60%)`,
+            background: `radial-gradient(circle at ${specular.x}% ${specular.y}%, rgba(231,224,210,${specular.opacity}), transparent 60%)`,
           }}
         />
 
         {/* Top Edge Refraction Catch */}
-        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-beige/30 to-transparent" />
 
         {/* 3D Flipping Content Wrapper */}
         <motion.div

@@ -88,7 +88,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               <a
                 href="/resume.pdf"
                 download="Takshak_Singhania_Resume.pdf"
-                className="flex items-center space-x-1.5 px-3 py-1.5 bg-white text-black hover:bg-neutral-200 rounded text-xs font-mono font-semibold transition-colors"
+                className="flex items-center space-x-1.5 px-3 py-1.5 bg-beige text-black hover:bg-beige-warm rounded text-xs font-mono font-semibold transition-colors"
               >
                 <Download className="w-3.5 h-3.5" />
                 <span>DOWNLOAD</span>
@@ -98,7 +98,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 border border-surface-border text-text-muted hover:text-white rounded transition-colors hidden sm:block"
+                className="p-1.5 border border-surface-border text-text-muted hover:text-beige hover:border-beige/40 rounded transition-colors hidden sm:block"
                 title="Open in new tab"
               >
                 <ExternalLink className="w-4 h-4" />
@@ -106,7 +106,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
               <button
                 onClick={onClose}
-                className="p-1.5 border border-surface-border text-text-muted hover:text-white rounded transition-colors cursor-pointer"
+                className="p-1.5 border border-surface-border text-text-muted hover:text-beige hover:border-beige/40 rounded transition-colors cursor-pointer"
                 aria-label="Close resume viewer"
               >
                 <X className="w-4 h-4" />

@@ -32,13 +32,14 @@ export default function ProjectCard({
       }}
       className={`relative w-full rounded p-4 bg-surface border transition-all duration-300 cursor-pointer select-none group ${
         isActive
-          ? "border-white/40 shadow-tactile-hover"
-          : "border-surface-border hover:border-surface-border-bright"
+          ? "border-beige/50 shadow-tactile-hover"
+          : "border-surface-border hover:border-beige/30"
       } ${className}`}
     >
       {/* Top Meta Bar: Clean Project Number */}
-      <div className="flex items-center text-[10px] font-mono tracking-wider text-text-muted mb-3">
-        <span className="text-text-main font-bold">{project.number}</span>
+      <div className="flex items-center justify-between text-[10px] font-mono tracking-wider text-text-muted mb-3">
+        <span className="text-beige font-bold tracking-widest">{project.number}</span>
+        <span className="text-[9px] text-text-subtle uppercase">{project.year}</span>
       </div>
 
       {/* Image Preview Container */}
@@ -54,7 +55,7 @@ export default function ProjectCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
 
         {/* Hover Action Pill */}
-        <div className="absolute bottom-2.5 right-2.5 flex items-center space-x-1 px-2.5 py-1 bg-white/90 text-black text-[9px] font-mono tracking-widest uppercase rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <div className="absolute bottom-2.5 right-2.5 flex items-center space-x-1 px-2.5 py-1 bg-beige text-black text-[9px] font-mono font-semibold tracking-widest uppercase rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <span>{isActive ? "EXPLORE" : "SELECT"}</span>
           <ArrowUpRight className="w-3 h-3" />
         </div>
@@ -66,7 +67,7 @@ export default function ProjectCard({
           {project.category}
         </div>
 
-        <h3 className="text-lg font-bold text-text-main tracking-tight group-hover:text-white transition-colors">
+        <h3 className="text-lg font-bold text-text-main tracking-tight group-hover:text-beige transition-colors">
           {project.title}
         </h3>
 
@@ -79,7 +80,7 @@ export default function ProjectCard({
           {project.stack.slice(0, 4).map((tech) => (
             <span
               key={tech}
-              className="text-[9px] font-mono px-2 py-0.5 bg-black/60 border border-surface-border text-text-muted rounded"
+              className="text-[9px] font-mono px-2 py-0.5 bg-black/60 border border-beige/15 text-beige/80 rounded"
             >
               {tech}
             </span>
@@ -93,7 +94,7 @@ export default function ProjectCard({
       </div>
 
       {/* Border top sheen */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-beige/25 to-transparent" />
     </article>
   );
 }

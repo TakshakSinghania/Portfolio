@@ -3,16 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --bg-base: #050505;
-  --bg-surface: #0D0D0D;
-  --bg-surface-elevated: #141414;
-  --bg-warm-light: #F6F5F2;
-  --text-primary: #F5F5F7;
-  --text-secondary: #8E8E93;
-  --text-tertiary: #48484A;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-light-catch: rgba(255, 255, 255, 0.16);
-  --sentosa-blue: #6492b3;
+  --bg-base: #060606;
+  --bg-surface: #0D0D0E;
+  --bg-surface-elevated: #151517;
+  --bg-warm-light: #F5F3EE;
+  --text-primary: #F5F3EE;
+  --text-secondary: #A89F91;
+  --text-tertiary: #5A5349;
+  --border-subtle: rgba(231, 224, 210, 0.10);
+  --border-light-catch: rgba(231, 224, 210, 0.22);
+  --accent-beige: #E7E0D2;
+  --accent-beige-muted: #8C8275;
 }
 
 html {
@@ -78,16 +79,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #060606;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #2A2722;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: #453F37;
 }
 
 /* Lenis smooth scrolling rules */

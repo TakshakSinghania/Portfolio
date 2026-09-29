@@ -14,11 +14,10 @@ export default function ScatteredGridView({
 }: ScatteredGridViewProps) {
   // Intentional editorial offsets & subtle physical angles
   const scatteredSpecs = [
-    { colSpan: "md:col-span-7", offset: "md:translate-x-4", rotate: -1.5 },
-    { colSpan: "md:col-span-5", offset: "md:translate-y-12 md:-translate-x-2", rotate: 2 },
-    { colSpan: "md:col-span-5", offset: "md:translate-y-4 md:translate-x-6", rotate: 1 },
-    { colSpan: "md:col-span-7", offset: "md:-translate-y-8 md:-translate-x-4", rotate: -2 },
-    { colSpan: "md:col-span-8 md:col-start-3", offset: "md:translate-y-6", rotate: 0.5 },
+    { colSpan: "md:col-span-7", offset: "md:translate-x-2", rotate: -1.2 },
+    { colSpan: "md:col-span-5", offset: "md:translate-y-8 md:-translate-x-2", rotate: 1.5 },
+    { colSpan: "md:col-span-5", offset: "md:translate-y-4 md:translate-x-4", rotate: 1 },
+    { colSpan: "md:col-span-7", offset: "md:-translate-y-4 md:-translate-x-2", rotate: -1.5 },
   ];
 
   return (
