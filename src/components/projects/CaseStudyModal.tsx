@@ -17,6 +17,7 @@ export default function CaseStudyModal({
 }: CaseStudyModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLElement | null>(null);
+  const scrollYRef = useRef<number>(0);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -24,21 +25,24 @@ export default function CaseStudyModal({
     };
 
     if (project) {
-      // 1. Capture the element that triggered the modal for focus restoration
-      if (document.activeElement instanceof HTMLElement) {
+      // 1. Capture the element that triggered the modal for accessible focus restoration (only if not body)
+      if (document.activeElement instanceof HTMLElement && document.activeElement !== document.body) {
         triggerRef.current = document.activeElement;
+      } else {
+        triggerRef.current = null;
       }
 
       // 2. Lock homepage scroll with exact position preservation (no jump)
-      const scrollY = window.scrollY;
-
       const lenis = (window as any).__lenis;
+      const currentScroll = typeof lenis?.scroll === "number" ? lenis.scroll : window.scrollY;
+      scrollYRef.current = currentScroll;
+
       if (lenis) {
         lenis.stop();
       }
 
       document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
+      document.body.style.top = `-${currentScroll}px`;
       document.body.style.left = "0";
       document.body.style.right = "0";
       document.body.style.width = "100%";
@@ -48,15 +52,16 @@ export default function CaseStudyModal({
 
       // Focus modal container so keyboard navigation (PageUp/PageDown/Arrows) works immediately
       const timer = setTimeout(() => {
-        modalRef.current?.focus();
+        modalRef.current?.focus({ preventScroll: true });
       }, 50);
 
       return () => {
         clearTimeout(timer);
         window.removeEventListener("keydown", handleKeyDown);
 
+        const targetY = scrollYRef.current;
+
         // 3. Unlock homepage scroll and restore exact pixel position
-        const savedTop = document.body.style.top;
         document.body.style.position = "";
         document.body.style.top = "";
         document.body.style.left = "";
@@ -64,19 +69,24 @@ export default function CaseStudyModal({
         document.body.style.width = "";
         document.body.style.overflow = "";
 
-        const y = parseInt(savedTop || "0", 10) * -1;
-        window.scrollTo(0, y);
+        window.scrollTo(0, targetY);
 
         const currentLenis = (window as any).__lenis;
         if (currentLenis) {
           currentLenis.start();
-          currentLenis.scrollTo(y, { immediate: true });
+          currentLenis.scrollTo(targetY, { immediate: true });
         }
 
-        // Return focus to opening trigger
-        if (triggerRef.current) {
-          triggerRef.current.focus();
-        }
+        // Secondary RAF tick guarantees browser reflow does not reset window scroll position
+        requestAnimationFrame(() => {
+          window.scrollTo(0, targetY);
+          if (currentLenis) {
+            currentLenis.scrollTo(targetY, { immediate: true });
+          }
+          if (triggerRef.current && triggerRef.current !== document.body) {
+            triggerRef.current.focus({ preventScroll: true });
+          }
+        });
       };
     }
   }, [project, onClose]);
@@ -140,6 +150,17 @@ export default function CaseStudyModal({
 
             {/* Quick action buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-4 py-2 bg-beige hover:bg-beige-warm text-black font-semibold rounded text-xs font-mono tracking-wider transition-all shadow-sm"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>LIVE DEMO</span>
+                </a>
+              )}
               {project.github && (
                 <a
                   href={project.github}

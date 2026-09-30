@@ -268,4 +268,67 @@ export const PROJECTS: Project[] = [
       { label: "Test Coverage", value: "Jest automated test suite", verified: true },
     ],
   },
+  {
+    id: "vox",
+    number: "05",
+    title: "Vox",
+    subtitle: "Multimodal AI Platform: Real-Time Voice, Streaming Chat & Image Studio",
+    tagline:
+      "Multimodal AI platform combining real-time voice interaction, streaming AI conversations, and image generation in one interface.",
+    category: "AI / MULTIMODAL / REAL-TIME",
+    year: "2026",
+    status: "PRODUCTION",
+    featured: true,
+    github: "https://github.com/TakshakSinghania/Vox-ai-platform",
+    demoUrl: "https://vox-ai-platform.vercel.app",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "LiveKit",
+      "WebRTC",
+      "SSE",
+      "CallMissed API",
+    ],
+    image: "/images/projects/vox.png",
+    color: "#E7E0D2",
+    overview:
+      "Multimodal AI platform combining real-time voice interaction, streaming AI conversations, and image generation in one interface. Engineered with low-latency full-duplex WebRTC audio streaming, Server-Sent Events, and parametric diffusion synthesis.",
+    problem:
+      "Developers and users face fragmented workflows switching between separate chatbots, image tools, and sluggish half-duplex voice assistants with high latency that breaks conversational naturalness.",
+    architecture: [
+      "Real-Time Voice Agent: Sub-400ms full-duplex WebRTC audio streaming via LiveKit and CallMissed Voice Session API with server-side voice activity detection (VAD).",
+      "Streaming Conversational Intelligence: Low-latency token delivery over Server-Sent Events (SSE) with AICSS shimmer thinking states for pre-token reasoning.",
+      "Parametric Diffusion Studio: High-fidelity image synthesis across selectable aspect ratios powered by FLUX 2 and SDXL diffusion pipelines.",
+      "Server-Side Credential Isolation: Secure Next.js Route Handlers proxying all upstream AI and WebRTC provider keys, keeping client browsers free of secrets.",
+    ],
+    technicalDecisions: [
+      {
+        decision: "Full-Duplex WebRTC over HTTP Polling",
+        rationale:
+          "Direct peer audio transport eliminates request-response overhead, dropping round-trip voice latency below 400ms for natural conversation interruptions.",
+      },
+      {
+        decision: "Server-Side Voice Activity Detection (VAD)",
+        rationale:
+          "Instantly interrupts and halts AI audio synthesis the moment the user speaks, mimicking human conversational parity without manual push-to-talk.",
+      },
+      {
+        decision: "Server-Sent Events (SSE) Token Streaming",
+        rationale:
+          "Streams LLM response tokens character-by-character with minimal memory overhead compared to heavier bi-directional socket protocols.",
+      },
+    ],
+    security: [
+      "Zero-secret-leak architecture keeping all API keys server-side",
+      "Ephemeral session tokens generated per WebRTC connection",
+      "Route Handler proxy isolation preventing direct client access to provider endpoints",
+    ],
+    results: [
+      { label: "Voice Latency", value: "<400ms full-duplex WebRTC", verified: true },
+      { label: "Multimodal Workspaces", value: "Voice, Chat & Image Studio", verified: true },
+      { label: "Credential Exposure", value: "0% (strict server-side isolation)", verified: true },
+      { label: "Architecture", value: "Next.js App Router + LiveKit", verified: true },
+    ],
+  },
 ];

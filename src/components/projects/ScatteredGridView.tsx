@@ -18,6 +18,7 @@ export default function ScatteredGridView({
     { colSpan: "md:col-span-5", offset: "md:translate-y-8 md:-translate-x-2", rotate: 1.5 },
     { colSpan: "md:col-span-5", offset: "md:translate-y-4 md:translate-x-4", rotate: 1 },
     { colSpan: "md:col-span-7", offset: "md:-translate-y-4 md:-translate-x-2", rotate: -1.5 },
+    { colSpan: "md:col-span-8 md:col-start-3", offset: "md:translate-y-2", rotate: 0.8 },
   ];
 
   return (

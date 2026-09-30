@@ -37,9 +37,8 @@ export default function ProjectCard({
       } ${className}`}
     >
       {/* Top Meta Bar: Clean Project Number */}
-      <div className="flex items-center justify-between text-[10px] font-mono tracking-wider text-text-muted mb-3">
+      <div className="flex items-center text-[10px] font-mono tracking-wider text-text-muted mb-3">
         <span className="text-beige font-bold tracking-widest">{project.number}</span>
-        <span className="text-[9px] text-text-subtle uppercase">{project.year}</span>
       </div>
 
       {/* Image Preview Container */}
